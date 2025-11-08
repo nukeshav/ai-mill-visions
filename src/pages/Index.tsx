@@ -72,39 +72,35 @@ const Index = () => {
           </div>
         </Hero>
 
-        {/* Stats Section */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto">
-            <GlassCard>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div className="text-center">
-                  <StatsCounter end={500} suffix="+" />
-                  <p className="text-muted-foreground mt-2">Projects Delivered</p>
-                </div>
-                <div className="text-center">
-                  <StatsCounter end={250} suffix="+" />
-                  <p className="text-muted-foreground mt-2">AI Models Deployed</p>
-                </div>
-                <div className="text-center">
-                  <StatsCounter end={50} suffix="+" />
-                  <p className="text-muted-foreground mt-2">Industries Served</p>
-                </div>
-                <div className="text-center">
-                  <StatsCounter end={85} suffix="%" />
-                  <p className="text-muted-foreground mt-2">Efficiency Gains</p>
-                </div>
+        {/* Stats Counter */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="text-center">
+                <StatsCounter end={250} suffix="+" />
+                <p className="text-muted-foreground mt-2">Projects Delivered</p>
               </div>
-            </GlassCard>
+              <div className="text-center">
+                <StatsCounter end={98} suffix="%" />
+                <p className="text-muted-foreground mt-2">Client Satisfaction</p>
+              </div>
+              <div className="text-center">
+                <StatsCounter end={60} suffix="%" />
+                <p className="text-muted-foreground mt-2">Avg Efficiency Gain</p>
+              </div>
+              <div className="text-center">
+                <StatsCounter end={15} suffix="+" />
+                <p className="text-muted-foreground mt-2">Industries Served</p>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto">
+        {/* Services Grid */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
             <div className="text-center mb-16 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Our <span className="gradient-text">Solutions</span>
-              </h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Solutions</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Comprehensive AI solutions designed to transform every aspect of your business
               </p>
@@ -113,75 +109,70 @@ const Index = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {services.map((service, index) => (
                 <Link key={service.title} to={service.link}>
-                  <GlassCard
+                  <Card
                     hover
-                    className="h-full animate-slide-up"
+                    className="h-full text-center animate-slide-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4">
-                      <service.icon className="w-7 h-7 text-white" />
+                    <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                      <service.icon className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                     <p className="text-muted-foreground text-sm mb-4">{service.description}</p>
-                    <div className="flex items-center text-primary text-sm font-medium">
+                    <div className="flex items-center justify-center text-primary text-sm font-medium">
                       Learn more <ArrowRight className="ml-2 w-4 h-4" />
                     </div>
-                  </GlassCard>
+                  </Card>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto">
+        {/* Testimonials */}
+        <section className="py-20 section-gray">
+          <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Trusted by <span className="gradient-text">Industry Leaders</span>
-              </h2>
+              <h2 className="text-4xl font-bold mb-6">What Our Clients Say</h2>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               {testimonials.map((testimonial, index) => (
-                <GlassCard
-                  key={testimonial.author}
-                  className="animate-slide-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="mb-4">
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-5 h-5 text-primary">★</div>
-                      ))}
-                    </div>
-                    <p className="text-foreground italic mb-4">"{testimonial.quote}"</p>
+                <Card key={testimonial.author} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="w-5 h-5 text-primary">★</div>
+                    ))}
                   </div>
-                  <div>
+                  <p className="text-foreground italic mb-6">"{testimonial.quote}"</p>
+                  <div className="border-t pt-4">
                     <p className="font-semibold">{testimonial.author}</p>
                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                   </div>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto">
-            <GlassCard className="text-center max-w-4xl mx-auto gradient-border">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Ready to <span className="gradient-text">Transform</span> Your Business?
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                Let's discuss how AI can drive your success. Schedule a consultation today.
-              </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg">
+        <section className="py-20 bg-gradient-to-r from-primary to-primary-dark text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl mb-8 text-white/90">
+              Let's discuss how AI can drive your success. Schedule a consultation today.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="outline" className="text-lg border-white text-white hover:bg-white hover:text-primary">
                 Schedule Consultation
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-            </GlassCard>
+              <Button size="lg" variant="outline" className="text-lg border-white text-white hover:bg-white hover:text-primary">
+                View Case Studies
+              </Button>
+            </div>
           </div>
         </section>
       </main>
