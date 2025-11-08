@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Card from "@/components/Card";
 import StatsCounter from "@/components/StatsCounter";
 import Hero from "@/components/Hero";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { Button } from "@/components/ui/button";
 import { Brain, TrendingUp, FileCheck, Scale, ArrowRight, CheckCircle2 } from "lucide-react";
 import heroImage from "@/assets/hero-business.jpg";
@@ -38,19 +39,34 @@ const Index = () => {
 
   const testimonials = [
     {
-      quote: "AI Mill transformed our operations. The efficiency gains have been remarkable.",
+      quote: "Piqo Studio is a great icon designer. They are fast, reliable, easy to work with, and always keen to do some explorations to find the best concept possible for any icon. I hope to keep working with them in the future!",
+      author: "Robin Noguier",
+      role: "Senior Interactive Designer",
+    },
+    {
+      quote: "AI Mill transformed our operations. The efficiency gains have been remarkable. Their team understood our needs perfectly and delivered beyond expectations.",
       author: "Sarah Chen",
       role: "CTO, TechCorp",
     },
     {
-      quote: "Their marketing platform doubled our conversion rate in just three months.",
+      quote: "Their marketing platform doubled our conversion rate in just three months. The ROI has been incredible and the support team is always responsive.",
       author: "Michael Rodriguez",
       role: "CMO, GrowthScale",
     },
     {
-      quote: "The claims processing system saved us thousands of hours. Game-changing.",
+      quote: "The claims processing system saved us thousands of hours. Game-changing technology that actually works as promised. Highly recommend!",
       author: "Jennifer Williams",
       role: "VP Operations, SecureLife",
+    },
+    {
+      quote: "Working with AI Mill has been a pleasure. Their AI consulting helped us identify opportunities we never knew existed. Truly transformative.",
+      author: "David Park",
+      role: "CEO, InnovateCo",
+    },
+    {
+      quote: "I enjoyed working with this team. They delivered custom icons for our platform with quick revisions. Can't wait to work together again!",
+      author: "Cecilia Smith",
+      role: "Lead Product Designer",
     },
   ];
 
@@ -130,27 +146,19 @@ const Index = () => {
         </section>
 
         {/* Testimonials */}
-        <section className="py-20 section-gray">
+        <section className="py-20 section-gray overflow-hidden">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-6">What Our Clients Say</h2>
-            </div>
+            <div className="flex flex-col lg:flex-row gap-12 items-start">
+              {/* Left side - Heading */}
+              <div className="lg:w-1/4 flex-shrink-0">
+                <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">CLIENTS</p>
+                <h2 className="text-4xl font-bold">What people say about us?</h2>
+              </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {testimonials.map((testimonial, index) => (
-                <Card key={testimonial.author} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <div key={i} className="w-5 h-5 text-primary">★</div>
-                    ))}
-                  </div>
-                  <p className="text-foreground italic mb-6">"{testimonial.quote}"</p>
-                  <div className="border-t pt-4">
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                  </div>
-                </Card>
-              ))}
+              {/* Right side - Carousel */}
+              <div className="flex-1 min-w-0">
+                <TestimonialCarousel testimonials={testimonials} />
+              </div>
             </div>
           </div>
         </section>

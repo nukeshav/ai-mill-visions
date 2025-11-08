@@ -30,7 +30,7 @@ const Contact = () => {
     <div className="min-h-screen relative">
       <Navigation />
       
-      <main className="relative z-10 pt-24 pb-20">
+      <main className="relative z-20 pt-24 pb-40 top-20">
         <div className="container mx-auto px-4">
           {/* Hero Section */}
           <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
@@ -42,7 +42,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto bg-black/5 backdrop-blur-xl rounded-xl p-8">
             {/* Contact Form */}
             <GlassCard className="animate-slide-up">
               <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
@@ -116,7 +116,7 @@ const Contact = () => {
                 <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-secondary to-accent flex items-center justify-center flex-shrink-0">
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -136,7 +136,7 @@ const Contact = () => {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-secondary to-accent flex items-center justify-center flex-shrink-0">
                       <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>

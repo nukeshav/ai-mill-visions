@@ -4,13 +4,13 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-white">
+    <footer className="bg-[#263358] text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About Column */}
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <img src={logo} alt="AI Mill Logo" className="h-8 w-auto brightness-0 invert" />
+              {/* <img src={logo} alt="AI Mill Logo" className="h-8 w-auto brightness-0 invert" /> */}
               <span className="text-xl font-bold">AI Mill</span>
             </div>
             <p className="text-white/80 mb-4">
@@ -77,7 +77,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 flex-shrink-0" />
-                <a href="mailto:info@aimill.com" className="text-white/80 hover:text-primary transition-colors">
+                  <a href="mailto:info@aimill.com" className="text-white/80 hover:text-primary transition-colors">
                   info@aimill.com
                 </a>
               </li>
@@ -99,7 +99,7 @@ const Footer = () => {
             <Link to="#" className="text-white/60 hover:text-primary text-sm transition-colors">
               Privacy Policy
             </Link>
-            <Link to="#" className="text-white/60 hover:text-primary text-sm transition-colors">
+              <Link to="#" className="text-white/60 hover:text-primary text-sm transition-colors">
               Terms of Service
             </Link>
           </div>
