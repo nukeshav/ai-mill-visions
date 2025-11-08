@@ -19,29 +19,29 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img src={logo} alt="AI Mill Logo" className="h-10 w-auto" />
-            <span className="text-xl font-bold gradient-text">AI Mill</span>
+            <span className="text-xl font-bold text-foreground">AI Mill</span>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
             <Link
               to="/"
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/") ? "text-primary" : "text-foreground"
+              className={`text-sm font-medium transition-colors hover:text-primary pb-1 ${
+                isActive("/") ? "text-primary border-b-2 border-primary" : "text-foreground"
               }`}
             >
               Home
             </Link>
             <Link
               to="/about"
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/about") ? "text-primary" : "text-foreground"
+              className={`text-sm font-medium transition-colors hover:text-primary pb-1 ${
+                isActive("/about") ? "text-primary border-b-2 border-primary" : "text-foreground"
               }`}
             >
               About
@@ -53,28 +53,35 @@ const Navigation = () => {
               onMouseEnter={() => setSolutionsOpen(true)}
               onMouseLeave={() => setSolutionsOpen(false)}
             >
-              <button className="text-sm font-medium text-foreground hover:text-primary flex items-center gap-1">
+              <button className="text-sm font-medium text-foreground hover:text-primary flex items-center gap-1 pb-1">
                 Solutions <ChevronDown className="w-4 h-4" />
               </button>
               {solutionsOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 glass-card rounded-lg shadow-lg py-2 animate-fade-in">
-                  {solutions.map((solution) => (
-                    <Link
-                      key={solution.path}
-                      to={solution.path}
-                      className="block px-4 py-2 text-sm text-foreground hover:text-primary hover:bg-muted/50 transition-colors"
-                    >
-                      {solution.name}
-                    </Link>
-                  ))}
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl p-4 space-y-2 animate-fade-in border border-border">
+                  <Link to="/solutions/consulting" className="block p-3 rounded-lg hover:bg-accent transition-colors">
+                    <h4 className="font-semibold text-sm mb-1">Boutique AI Consulting</h4>
+                    <p className="text-xs text-muted-foreground">Custom AI strategies</p>
+                  </Link>
+                  <Link to="/solutions/marketing" className="block p-3 rounded-lg hover:bg-accent transition-colors">
+                    <h4 className="font-semibold text-sm mb-1">AI Marketing Platform</h4>
+                    <p className="text-xs text-muted-foreground">Automated campaigns</p>
+                  </Link>
+                  <Link to="/solutions/claims" className="block p-3 rounded-lg hover:bg-accent transition-colors">
+                    <h4 className="font-semibold text-sm mb-1">AI Claims Assistant</h4>
+                    <p className="text-xs text-muted-foreground">Streamline processing</p>
+                  </Link>
+                  <Link to="/solutions/legal" className="block p-3 rounded-lg hover:bg-accent transition-colors">
+                    <h4 className="font-semibold text-sm mb-1">AI Legal & Tax Assistant</h4>
+                    <p className="text-xs text-muted-foreground">Intelligent automation</p>
+                  </Link>
                 </div>
               )}
             </div>
 
             <Link
               to="/contact"
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/contact") ? "text-primary" : "text-foreground"
+              className={`text-sm font-medium transition-colors hover:text-primary pb-1 ${
+                isActive("/contact") ? "text-primary border-b-2 border-primary" : "text-foreground"
               }`}
             >
               Contact

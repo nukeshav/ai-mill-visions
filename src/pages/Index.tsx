@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import GlassCard from "@/components/GlassCard";
+import Card from "@/components/Card";
 import StatsCounter from "@/components/StatsCounter";
+import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
-import { Sparkles, TrendingUp, Shield, Zap, ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-ai-network.jpg";
+import { Brain, TrendingUp, FileCheck, Scale, ArrowRight, CheckCircle2 } from "lucide-react";
+import heroImage from "@/assets/hero-business.jpg";
 
 const Index = () => {
   const services = [
     {
-      icon: Sparkles,
+      icon: Brain,
       title: "Boutique AI Consulting",
       description: "Custom AI strategies and solutions tailored to your unique business challenges.",
       link: "/solutions/consulting",
@@ -22,13 +23,13 @@ const Index = () => {
       link: "/solutions/marketing",
     },
     {
-      icon: Shield,
+      icon: FileCheck,
       title: "AI Claims Assistant",
       description: "Streamline insurance claims processing with 60-80% time reduction.",
       link: "/solutions/claims",
     },
     {
-      icon: Zap,
+      icon: Scale,
       title: "AI Legal & Tax Assistant",
       description: "Intelligent automation for legal research and tax compliance.",
       link: "/solutions/legal",
@@ -54,45 +55,22 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen">
       <Navigation />
       
-      <main className="relative z-10">
+      <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4">
-          <div className="container mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-fade-in">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                  Accelerating{" "}
-                  <span className="gradient-text">Intelligence</span>{" "}
-                  for Every Business
-                </h1>
-                <p className="text-xl text-muted-foreground mb-8">
-                  Transform your operations with cutting-edge AI solutions. From boutique consulting
-                  to powerful automation platforms, we deliver results that matter.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg">
-                    Get Started
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="text-lg border-primary text-primary hover:bg-primary/10">
-                    View Solutions
-                  </Button>
-                </div>
-              </div>
-              <div className="relative animate-float">
-                <img
-                  src={heroImage}
-                  alt="AI Neural Network"
-                  className="rounded-2xl shadow-2xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent rounded-2xl" />
-              </div>
-            </div>
+        <Hero title="Accelerating Intelligence for Every Business" subtitle="Transform your business with cutting-edge AI solutions" backgroundImage={heroImage}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="text-lg">
+              Get Started Today
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <Button size="lg" variant="outline" className="text-lg">
+              View Solutions
+            </Button>
           </div>
-        </section>
+        </Hero>
 
         {/* Stats Section */}
         <section className="py-20 px-4">
