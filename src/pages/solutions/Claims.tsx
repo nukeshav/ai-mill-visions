@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import GlassCard from "@/components/GlassCard";
+import Card from "@/components/Card";
 import { Button } from "@/components/ui/button";
 import { FileText, Scan, Clock, CheckCircle, ArrowRight } from "lucide-react";
 import claimsImage from "@/assets/claims-assistant.jpg";
@@ -97,14 +97,14 @@ const Claims = () => {
           <div className="mb-20">
             <div className="grid md:grid-cols-4 gap-6">
               {metrics.map((metric, index) => (
-                <GlassCard
+                <Card
                   key={metric.label}
                   className="text-center animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="text-5xl font-bold gradient-text mb-2">{metric.value}</div>
+                  <div className="text-5xl font-bold text-primary mb-2">{metric.value}</div>
                   <p className="text-muted-foreground">{metric.label}</p>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
@@ -114,14 +114,14 @@ const Claims = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Key Features</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {features.map((feature, index) => (
-                <GlassCard
+                <Card
                   key={feature.title}
                   hover
                   className="animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary to-accent flex items-center justify-center flex-shrink-0">
+                    <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
                       <feature.icon className="w-7 h-7 text-white" />
                     </div>
                     <div>
@@ -129,7 +129,7 @@ const Claims = () => {
                       <p className="text-muted-foreground text-sm">{feature.description}</p>
                     </div>
                   </div>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
@@ -137,25 +137,25 @@ const Claims = () => {
           {/* Workflow */}
           <div className="mb-20">
             <h2 className="text-4xl font-bold text-center mb-12">
-              Automated <span className="gradient-text">Workflow</span>
+              Automated Workflow
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {workflow.map((step, index) => (
-                <GlassCard
+                <Card
                   key={step.title}
                   className="animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="text-3xl font-bold gradient-text mb-3">{index + 1}</div>
+                  <div className="text-3xl font-bold text-primary mb-3">{index + 1}</div>
                   <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
                   <p className="text-muted-foreground text-sm">{step.description}</p>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
 
           {/* Before/After Comparison */}
-          <GlassCard className="max-w-4xl mx-auto">
+          <Card className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center">Before & After</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -179,7 +179,7 @@ const Claims = () => {
                 </ul>
               </div>
             </div>
-          </GlassCard>
+          </Card>
         </div>
       </main>
 

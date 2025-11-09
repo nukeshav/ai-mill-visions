@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import GlassCard from "@/components/GlassCard";
+import Card from "@/components/Card";
 import { Brain, Zap, Target, Users } from "lucide-react";
 import backgroundImg from "@/assets/vitaly-gariev-gItonyvrdUA-unsplash.jpg";
 
@@ -58,23 +58,23 @@ const About = () => {
 
             {/* Mission & Vision */}
             <div className="grid md:grid-cols-2 gap-8 pb-10">
-              <GlassCard className="animate-slide-up">
-                <h2 className="text-3xl font-bold mb-4 gradient-text">Our Mission</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed text-white/80">
+              <Card className="animate-slide-up bg-white/95">
+                <h2 className="text-3xl font-bold mb-4 text-primary">Our Mission</h2>
+                <p className="text-muted-foreground text-lg leading-relaxed">
                   To democratize artificial intelligence by making enterprise-grade AI solutions
                   accessible, practical, and impactful for businesses across all industries.
                   We believe every organization deserves the competitive advantage that AI provides.
                 </p>
-              </GlassCard>
+              </Card>
 
-              <GlassCard className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
-                <h2 className="text-3xl font-bold mb-4 gradient-text">Our Vision</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed text-white/80">
+              <Card className="animate-slide-up bg-white/95" style={{ animationDelay: "0.1s" }}>
+                <h2 className="text-3xl font-bold mb-4 text-primary">Our Vision</h2>
+                <p className="text-muted-foreground text-lg leading-relaxed">
                   To be the leading catalyst for AI-driven transformation, empowering businesses
                   to reach their full potential through intelligent automation, data-driven insights,
                   and innovative solutions that shape the future of work.
                 </p>
-              </GlassCard>
+              </Card>
             </div>
           </div>
         </div>
@@ -86,30 +86,30 @@ const About = () => {
               <h2 className="text-4xl font-bold text-center mb-12">Our Core Values</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {values.map((value, index) => (
-                  <GlassCard
+                  <Card
                     key={value.title}
                     hover
                     className="text-center animate-slide-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-black to-blue-500 flex items-center justify-center">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary flex items-center justify-center">
                       <value.icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
                     <p className="text-muted-foreground text-sm">{value.description}</p>
-                  </GlassCard>
+                  </Card>
                 ))}
               </div>
             </div>
 
             {/* Technology Stack */}
-            <GlassCard className="max-w-4xl mx-auto">
+            <Card className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-6 text-center">Technology Stack</h2>
               <p className="text-muted-foreground text-center mb-8">
                 We leverage industry-leading technologies and frameworks to build robust, scalable AI solutions
               </p>
               
-            </GlassCard>
+            </Card>
           </div>
         </div>
       </main>

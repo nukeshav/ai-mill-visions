@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import GlassCard from "@/components/GlassCard";
+import Card from "@/components/Card";
 import { Button } from "@/components/ui/button";
 import { Scale, FileSearch, Brain, Shield, ArrowRight } from "lucide-react";
 import legalImage from "@/assets/legal-assistant.jpg";
@@ -106,18 +106,18 @@ const Legal = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Core Capabilities</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
-                <GlassCard
+                <Card
                   key={feature.title}
                   hover
                   className="text-center animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary flex items-center justify-center">
                     <feature.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                   <p className="text-muted-foreground text-sm">{feature.description}</p>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
@@ -125,11 +125,11 @@ const Legal = () => {
           {/* Use Cases */}
           <div className="mb-20">
             <h2 className="text-4xl font-bold text-center mb-12">
-              Use <span className="gradient-text">Cases</span>
+              Use Cases
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {useCases.map((useCase, index) => (
-                <GlassCard
+                <Card
                   key={useCase.title}
                   hover
                   className="animate-slide-up"
@@ -137,34 +137,34 @@ const Legal = () => {
                 >
                   <h3 className="text-xl font-semibold mb-2">{useCase.title}</h3>
                   <p className="text-muted-foreground text-sm mb-4">{useCase.description}</p>
-                  <div className="inline-block px-3 py-1 glass-card rounded-full text-xs font-medium text-primary">
+                  <div className="inline-block px-3 py-1 bg-primary/10 rounded-full text-xs font-medium text-primary">
                     {useCase.savings}
                   </div>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
 
           {/* Benefits */}
           <div className="max-w-4xl mx-auto">
-            <GlassCard>
+            <Card>
               <h2 className="text-3xl font-bold mb-8 text-center">Key Benefits</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 {benefits.map((benefit) => (
                   <div key={benefit} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-0.5">
                       <div className="w-2 h-2 bg-white rounded-full" />
                     </div>
                     <p className="text-foreground">{benefit}</p>
                   </div>
                 ))}
               </div>
-            </GlassCard>
+            </Card>
           </div>
 
           {/* CTA */}
           <div className="mt-20">
-            <GlassCard className="max-w-3xl mx-auto text-center gradient-border">
+            <Card className="max-w-3xl mx-auto text-center border-2 border-primary">
               <h2 className="text-3xl font-bold mb-4">See It In Action</h2>
               <p className="text-muted-foreground mb-8">
                 Schedule a personalized demo to see how our AI Legal & Tax Assistant
@@ -174,7 +174,7 @@ const Legal = () => {
                 Book Demo
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-            </GlassCard>
+            </Card>
           </div>
         </div>
       </main>

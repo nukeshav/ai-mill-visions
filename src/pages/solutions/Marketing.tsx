@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import GlassCard from "@/components/GlassCard";
+import Card from "@/components/Card";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, BarChart3, Zap, Users, CheckCircle2, ArrowRight } from "lucide-react";
 import marketingImage from "@/assets/marketing-platform.jpg";
@@ -81,14 +81,14 @@ const Marketing = () => {
           <div className="mb-20">
             <div className="grid md:grid-cols-4 gap-6">
               {benefits.map((benefit, index) => (
-                <GlassCard
+                <Card
                   key={benefit.description}
                   className="text-center animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="text-5xl font-bold gradient-text mb-2">{benefit.metric}</div>
+                  <div className="text-5xl font-bold text-primary mb-2">{benefit.metric}</div>
                   <p className="text-muted-foreground">{benefit.description}</p>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
@@ -98,14 +98,14 @@ const Marketing = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Platform Features</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {features.map((feature, index) => (
-                <GlassCard
+                <Card
                   key={feature.title}
                   hover
                   className="animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0">
+                    <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
                       <feature.icon className="w-7 h-7 text-white" />
                     </div>
                     <div>
@@ -113,7 +113,7 @@ const Marketing = () => {
                       <p className="text-muted-foreground text-sm">{feature.description}</p>
                     </div>
                   </div>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
@@ -121,9 +121,9 @@ const Marketing = () => {
           {/* Integrations */}
           <div className="mb-20">
             <h2 className="text-4xl font-bold text-center mb-12">
-              Seamless <span className="gradient-text">Integrations</span>
+              Seamless Integrations
             </h2>
-            <GlassCard className="max-w-4xl mx-auto">
+            <Card className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-4">
                 {integrations.map((integration) => (
                   <div key={integration} className="flex items-center gap-3">
@@ -132,11 +132,11 @@ const Marketing = () => {
                   </div>
                 ))}
               </div>
-            </GlassCard>
+            </Card>
           </div>
 
           {/* ROI Section */}
-          <GlassCard className="max-w-4xl mx-auto text-center gradient-border">
+          <Card className="max-w-4xl mx-auto text-center border-2 border-primary">
             <h2 className="text-3xl font-bold mb-4">Calculate Your ROI</h2>
             <p className="text-muted-foreground mb-8">
               See how much time and money you could save with our AI marketing platform.
@@ -146,7 +146,7 @@ const Marketing = () => {
               Get ROI Estimate
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-          </GlassCard>
+          </Card>
         </div>
       </main>
 

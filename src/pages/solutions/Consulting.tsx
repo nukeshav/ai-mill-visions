@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import GlassCard from "@/components/GlassCard";
+import Card from "@/components/Card";
 import { Button } from "@/components/ui/button";
 import { Brain, Code, Lightbulb, Target, CheckCircle2, ArrowRight } from "lucide-react";
 import consultingImage from "@/assets/consulting-visual.jpg";
@@ -103,18 +103,18 @@ const Consulting = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Our Capabilities</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {capabilities.map((capability, index) => (
-                <GlassCard
+                <Card
                   key={capability.title}
                   hover
                   className="text-center animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary flex items-center justify-center">
                     <capability.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{capability.title}</h3>
                   <p className="text-muted-foreground text-sm">{capability.description}</p>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
@@ -124,21 +124,21 @@ const Consulting = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Our Process</h2>
             <div className="grid md:grid-cols-5 gap-6">
               {process.map((item, index) => (
-                <GlassCard
+                <Card
                   key={item.step}
                   className="text-center animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="text-5xl font-bold gradient-text mb-4">{item.step}</div>
+                  <div className="text-5xl font-bold text-primary mb-4">{item.step}</div>
                   <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-sm">{item.description}</p>
-                </GlassCard>
+                </Card>
               ))}
             </div>
           </div>
 
           {/* Industries */}
-          <GlassCard className="max-w-4xl mx-auto">
+          <Card className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center">Industries We Serve</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {industries.map((industry) => (
@@ -148,7 +148,7 @@ const Consulting = () => {
                 </div>
               ))}
             </div>
-          </GlassCard>
+          </Card>
         </div>
       </main>
 
