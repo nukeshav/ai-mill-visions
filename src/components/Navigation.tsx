@@ -1,23 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import logo from "@/assets/logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
   const isSolutionsActive = location.pathname.startsWith("/solutions/");
 
   const solutions = [
-    { name: "Boutique AI Consulting", path: "/solutions/consulting" },
-    { name: "AI Marketing Platform", path: "/solutions/marketing" },
-    { name: "AI Claims Assistant", path: "/solutions/claims" },
-    { name: "AI Legal & Tax Assistant", path: "/solutions/legal" },
+    { name: "Boutique AI Consulting", path: "/solutions/consulting", desc: "Custom AI strategies" },
+    { name: "AI Marketing Platform", path: "/solutions/marketing", desc: "Automated campaigns" },
+    { name: "AI Claims Assistant", path: "/solutions/claims", desc: "Streamline processing" },
+    { name: "AI Legal & Tax Assistant", path: "/solutions/legal", desc: "Intelligent automation" },
   ];
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+    setMobileSolutionsOpen(false);
+  }, [location.pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+    setMobileSolutionsOpen(false);
+  };
 
   return (
     <>
@@ -61,22 +85,16 @@ const Navigation = () => {
               {solutionsOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-64">
                   <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl p-4 space-y-2 animate-fade-in border border-border">
-                    <Link to="/solutions/consulting" className="block p-3 rounded-lg hover:bg-accent transition-colors">
-                      <h4 className="font-semibold text-sm mb-1">Boutique AI Consulting</h4>
-                      <p className="text-xs text-muted-foreground">Custom AI strategies</p>
-                    </Link>
-                    <Link to="/solutions/marketing" className="block p-3 rounded-lg hover:bg-accent transition-colors">
-                      <h4 className="font-semibold text-sm mb-1">AI Marketing Platform</h4>
-                      <p className="text-xs text-muted-foreground">Automated campaigns</p>
-                    </Link>
-                    <Link to="/solutions/claims" className="block p-3 rounded-lg hover:bg-accent transition-colors">
-                      <h4 className="font-semibold text-sm mb-1">AI Claims Assistant</h4>
-                      <p className="text-xs text-muted-foreground">Streamline processing</p>
-                    </Link>
-                    <Link to="/solutions/legal" className="block p-3 rounded-lg hover:bg-accent transition-colors">
-                      <h4 className="font-semibold text-sm mb-1">AI Legal & Tax Assistant</h4>
-                      <p className="text-xs text-muted-foreground">Intelligent automation</p>
-                    </Link>
+                    {solutions.map((solution) => (
+                      <Link 
+                        key={solution.path}
+                        to={solution.path} 
+                        className="block p-3 rounded-lg hover:bg-accent transition-colors"
+                      >
+                        <h4 className="font-semibold text-sm mb-1">{solution.name}</h4>
+                        <p className="text-xs text-muted-foreground">{solution.desc}</p>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               )}
@@ -95,57 +113,144 @@ const Navigation = () => {
       </nav>
 
       {/* Mobile Navbar */}
-      <nav className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-4">
+      <nav className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-md">
+        <div className="px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3">
-              <img src={logo} alt="AI Mill Logo" className="h-10 w-auto" />
-              <span className="text-xl font-bold text-foreground">AI Mill</span>
+            <Link 
+              to="/" 
+              className="flex items-center space-x-2"
+              onClick={closeMobileMenu}
+            >
+              <img src={logo} alt="AI Mill Logo" className="h-9 w-auto" />
+              <span className="text-lg font-bold text-foreground">AI Mill</span>
             </Link>
 
             {/* Mobile Menu Button */}
             <button
-              className="text-foreground"
+              className="text-foreground p-2 hover:bg-accent rounded-lg transition-colors"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
+        </div>
+      </nav>
 
-          {/* Mobile Menu */}
-          {isOpen && (
-            <div className="mt-4 pb-4 animate-fade-in">
-              <div className="flex flex-col space-y-4">
-                <Link to="/" className="text-foreground hover:text-primary transition-colors">
-                  Home
-                </Link>
-                <Link to="/about" className="text-foreground hover:text-primary transition-colors">
-                  About
-                </Link>
-                <div className="space-y-2">
-                  <div className="text-muted-foreground text-sm font-semibold">Solutions</div>
+      {/* Mobile Menu - Outside nav to avoid z-index issues */}
+      {isOpen && (
+        <>
+          {/* Backdrop Overlay */}
+          <div 
+            className="lg:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-[45]"
+            onClick={closeMobileMenu}
+          />
+
+          {/* Mobile Menu Content */}
+          <div className="lg:hidden fixed top-[60px] left-0 right-0 bottom-0 bg-white overflow-y-auto z-[48] shadow-lg">
+            <div className="px-4 py-6 space-y-1">
+            {/* Home Link */}
+            <Link 
+              to="/" 
+              className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                isActive("/") 
+                  ? "bg-primary/10 text-primary" 
+                  : "text-foreground hover:bg-accent"
+              }`}
+            >
+              Home
+            </Link>
+
+            {/* About Link */}
+            <Link 
+              to="/about" 
+              className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                isActive("/about") 
+                  ? "bg-primary/10 text-primary" 
+                  : "text-foreground hover:bg-accent"
+              }`}
+            >
+              About
+            </Link>
+
+            {/* Solutions Accordion */}
+            <div className="space-y-1">
+              <button
+                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                  isSolutionsActive 
+                    ? "bg-primary/10 text-primary" 
+                    : "text-foreground hover:bg-accent"
+                }`}
+              >
+                <span>Solutions</span>
+                <ChevronDown 
+                  className={`w-5 h-5 transition-transform duration-200 ${
+                    mobileSolutionsOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+
+              {/* Solutions Submenu */}
+              <div 
+                className={`overflow-hidden transition-all duration-300 ${
+                  mobileSolutionsOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <div className="py-2 space-y-1">
                   {solutions.map((solution) => (
                     <Link
                       key={solution.path}
                       to={solution.path}
-                      className="block pl-4 text-foreground hover:text-primary transition-colors"
+                      className={`flex items-start gap-3 px-4 py-3 ml-4 rounded-lg transition-colors ${
+                        isActive(solution.path)
+                          ? "bg-primary/10 text-primary border-l-2 border-primary"
+                          : "text-foreground/80 hover:bg-accent hover:text-foreground"
+                      }`}
                     >
-                      {solution.name}
+                      <ChevronRight className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="text-sm font-medium">{solution.name}</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">{solution.desc}</div>
+                      </div>
                     </Link>
                   ))}
                 </div>
-                <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
-                  Contact
-                </Link>
-                <Button className="bg-primary hover:bg-primary/90 w-full">
-                  Get Started
-                </Button>
               </div>
             </div>
-          )}
-        </div>
-      </nav>
+
+            {/* Contact Link */}
+            <Link 
+              to="/contact" 
+              className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                isActive("/contact") 
+                  ? "bg-primary/10 text-primary" 
+                  : "text-foreground hover:bg-accent"
+              }`}
+            >
+              Contact
+            </Link>
+
+            {/* CTA Button */}
+            <div className="pt-4 px-4">
+              <Link to="/contact" onClick={closeMobileMenu}>
+                <Button className="bg-primary hover:bg-primary/90 w-full py-6 text-base font-semibold shadow-lg">
+                  Get Started
+                </Button>
+              </Link>
+            </div>
+
+            {/* Additional Info */}
+            <div className="pt-6 px-4 border-t border-border mt-6">
+              <p className="text-xs text-muted-foreground text-center">
+                © {new Date().getFullYear()} AI Mill. All rights reserved.
+              </p>
+            </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
