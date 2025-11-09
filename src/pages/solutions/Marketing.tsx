@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import Card from "@/components/Card";
+import GlassCard from "@/components/GlassCard";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, BarChart3, Zap, Users, CheckCircle2, ArrowRight } from "lucide-react";
 import marketingImage from "@/assets/marketing-platform.jpg";
@@ -63,10 +64,12 @@ const Marketing = () => {
                 Transform your marketing operations with intelligent automation. Reach customers
                 across all channels with personalized, AI-driven campaigns that convert.
               </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Request Demo
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  Request Demo
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
             </div>
             <div className="animate-slide-up">
               <img
@@ -81,14 +84,14 @@ const Marketing = () => {
           <div className="mb-20">
             <div className="grid md:grid-cols-4 gap-6">
               {benefits.map((benefit, index) => (
-                <Card
+                <GlassCard
                   key={benefit.description}
                   className="text-center animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="text-5xl font-bold text-primary mb-2">{benefit.metric}</div>
                   <p className="text-muted-foreground">{benefit.description}</p>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>
@@ -98,7 +101,7 @@ const Marketing = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Platform Features</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {features.map((feature, index) => (
-                <Card
+                <GlassCard
                   key={feature.title}
                   hover
                   className="animate-slide-up"
@@ -113,7 +116,7 @@ const Marketing = () => {
                       <p className="text-muted-foreground text-sm">{feature.description}</p>
                     </div>
                   </div>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>
@@ -123,7 +126,7 @@ const Marketing = () => {
             <h2 className="text-4xl font-bold text-center mb-12">
               Seamless Integrations
             </h2>
-            <Card className="max-w-4xl mx-auto">
+            <GlassCard className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-2 gap-4">
                 {integrations.map((integration) => (
                   <div key={integration} className="flex items-center gap-3">
@@ -132,21 +135,23 @@ const Marketing = () => {
                   </div>
                 ))}
               </div>
-            </Card>
+            </GlassCard>
           </div>
 
           {/* ROI Section */}
-          <Card className="max-w-4xl mx-auto text-center border-2 border-primary">
-            <h2 className="text-3xl font-bold mb-4">Calculate Your ROI</h2>
+          <GlassCard className="max-w-4xl mx-auto text-center border-2 border-primary">
+            <h2 className="text-3xl font-bold mb-4">Let's Talk About Your Goals</h2>
             <p className="text-muted-foreground mb-8">
               See how much time and money you could save with our AI marketing platform.
               Most clients see positive ROI within 3 months.
             </p>
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              Get ROI Estimate
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Card>
+            <Link to="/contact">
+              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                Get ROI Estimate
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </GlassCard>
         </div>
       </main>
 

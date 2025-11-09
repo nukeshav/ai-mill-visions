@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import Card from "@/components/Card";
+import GlassCard from "@/components/GlassCard";
 import { Button } from "@/components/ui/button";
 import { FileText, Scan, Clock, CheckCircle, ArrowRight } from "lucide-react";
 import claimsImage from "@/assets/claims-assistant.jpg";
@@ -79,10 +80,12 @@ const Claims = () => {
                 Revolutionize your claims processing with AI that understands, validates,
                 and routes claims automatically. Reduce processing time by up to 80%.
               </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Schedule Demo
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  Schedule Demo
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
             </div>
             <div className="animate-slide-up">
               <img
@@ -97,14 +100,14 @@ const Claims = () => {
           <div className="mb-20">
             <div className="grid md:grid-cols-4 gap-6">
               {metrics.map((metric, index) => (
-                <Card
+                <GlassCard
                   key={metric.label}
                   className="text-center animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="text-5xl font-bold text-primary mb-2">{metric.value}</div>
                   <p className="text-muted-foreground">{metric.label}</p>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>
@@ -114,7 +117,7 @@ const Claims = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Key Features</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {features.map((feature, index) => (
-                <Card
+                <GlassCard
                   key={feature.title}
                   hover
                   className="animate-slide-up"
@@ -129,7 +132,7 @@ const Claims = () => {
                       <p className="text-muted-foreground text-sm">{feature.description}</p>
                     </div>
                   </div>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>
@@ -141,7 +144,7 @@ const Claims = () => {
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {workflow.map((step, index) => (
-                <Card
+                <GlassCard
                   key={step.title}
                   className="animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -149,13 +152,13 @@ const Claims = () => {
                   <div className="text-3xl font-bold text-primary mb-3">{index + 1}</div>
                   <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
                   <p className="text-muted-foreground text-sm">{step.description}</p>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>
 
           {/* Before/After Comparison */}
-          <Card className="max-w-4xl mx-auto">
+          <GlassCard className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center">Before & After</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -179,7 +182,7 @@ const Claims = () => {
                 </ul>
               </div>
             </div>
-          </Card>
+          </GlassCard>
         </div>
       </main>
 

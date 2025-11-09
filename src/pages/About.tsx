@@ -1,18 +1,20 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import Card from "@/components/Card";
-import { Brain, Zap, Target, Users } from "lucide-react";
-import backgroundImg from "@/assets/vitaly-gariev-gItonyvrdUA-unsplash.jpg";
+import GlassCard from "@/components/GlassCard";
+import { Button } from "@/components/ui/button";
+import { Award, Users, Target, Heart, ArrowRight, Lightbulb, TrendingUp, Shield } from "lucide-react";
+import teamPhoto from "@/assets/team-photo.jpg";
 
 const About = () => {
   const values = [
     {
-      icon: Brain,
+      icon: Heart,
       title: "Innovation First",
       description: "We leverage cutting-edge AI technologies to solve complex business challenges.",
     },
     {
-      icon: Zap,
+      icon: TrendingUp,
       title: "Rapid Deployment",
       description: "Our solutions are designed for quick implementation and immediate impact.",
     },
@@ -28,89 +30,116 @@ const About = () => {
     },
   ];
 
+  const expertise = [
+    {
+      icon: Lightbulb,
+      title: "Deep Learning Experts",
+      description: "PhDs and researchers pushing AI boundaries",
+    },
+    {
+      icon: Shield,
+      title: "Enterprise Security",
+      description: "Bank-grade security and compliance standards",
+    },
+    {
+      icon: Award,
+      title: "Proven Track Record",
+      description: "250+ successful AI implementations",
+    },
+  ];
+
   return (
     <div className="min-h-screen relative">
       <Navigation />
       
-      <main className="relative z-10">
-        {/* Hero Section with Background */}
-        <div 
-          className="relative pt-24 pb-20"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.46), rgba(59, 59, 59, 0.47)), url(${backgroundImg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="container mx-auto px-4 py-20">
-            {/* Hero Section */}
-            <div className="max-w-4xl mx-auto text-center mb-20 animate-fade-in">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-                Transforming Businesses with{" "}
-                <span className="gradient-text">AI Excellence</span>
+      <main className="relative z-10 pt-24 pb-20">
+        <div className="container mx-auto px-4">
+          {/* Hero Section */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+            <div className="animate-fade-in">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                We're <span className="gradient-text">AI Mill</span>
               </h1>
-              <p className="text-xl text-white/80">
-                AI Mill is a boutique AI consulting firm dedicated to accelerating intelligence
-                for businesses of all sizes. We combine cutting-edge technology with deep industry
-                expertise to deliver transformative solutions.
+              <p className="text-xl text-muted-foreground">
+                Founded by AI experts and business strategists, AI Mill bridges the gap between
+                cutting-edge technology and practical business solutions. We're not just consultants —
+                we're your partners in digital transformation.
               </p>
+              <Link to="/contact">
+                <Button size="lg" className="mt-6">
+                  Work With Us
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
             </div>
-
-            {/* Mission & Vision */}
-            <div className="grid md:grid-cols-2 gap-8 pb-10">
-              <Card className="animate-slide-up bg-white/95">
-                <h2 className="text-3xl font-bold mb-4 text-primary">Our Mission</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  To democratize artificial intelligence by making enterprise-grade AI solutions
-                  accessible, practical, and impactful for businesses across all industries.
-                  We believe every organization deserves the competitive advantage that AI provides.
-                </p>
-              </Card>
-
-              <Card className="animate-slide-up bg-white/95" style={{ animationDelay: "0.1s" }}>
-                <h2 className="text-3xl font-bold mb-4 text-primary">Our Vision</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  To be the leading catalyst for AI-driven transformation, empowering businesses
-                  to reach their full potential through intelligent automation, data-driven insights,
-                  and innovative solutions that shape the future of work.
-                </p>
-              </Card>
+            
+            <div className="animate-slide-up">
+              <img
+                src={teamPhoto}
+                alt="AI Mill Team"
+                className="rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
-        </div>
 
-        {/* Core Values - No Background */}
-        <div className="bg-white py-20">
-          <div className="container mx-auto px-4">
-            <div className="mb-20">
-              <h2 className="text-4xl font-bold text-center mb-12">Our Core Values</h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {values.map((value, index) => (
-                  <Card
-                    key={value.title}
-                    hover
-                    className="text-center animate-slide-up"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary flex items-center justify-center">
-                      <value.icon className="w-8 h-8 text-white" />
+          {/* Values */}
+          <div className="mb-20">
+            <h2 className="text-4xl font-bold text-center mb-12">Our Core Values</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {values.map((value, index) => (
+                <GlassCard
+                  key={value.title}
+                  className="text-center animate-slide-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                    <value.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
+                  <p className="text-muted-foreground text-sm">{value.description}</p>
+                </GlassCard>
+              ))}
+            </div>
+          </div>
+
+          {/* Expertise */}
+          <div className="mb-20">
+            <h2 className="text-4xl font-bold text-center mb-12">Why Choose Us</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {expertise.map((item, index) => (
+                <GlassCard
+                  key={item.title}
+                  hover
+                  className="animate-slide-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-6 h-6 text-primary" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
-                    <p className="text-muted-foreground text-sm">{value.description}</p>
-                  </Card>
-                ))}
-              </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                      <p className="text-muted-foreground text-sm">{item.description}</p>
+                    </div>
+                  </div>
+                </GlassCard>
+              ))}
             </div>
-
-            {/* Technology Stack */}
-            <Card className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-6 text-center">Technology Stack</h2>
-              <p className="text-muted-foreground text-center mb-8">
-                We leverage industry-leading technologies and frameworks to build robust, scalable AI solutions
-              </p>
-              
-            </Card>
           </div>
+
+          {/* CTA */}
+          <GlassCard className="text-center max-w-4xl mx-auto border-2 border-primary">
+            <h2 className="text-3xl font-bold mb-4">Ready to Work Together?</h2>
+            <p className="text-muted-foreground mb-8">
+              Let's explore how AI can transform your business. Schedule a consultation to get started.
+            </p>
+            <Link to="/contact">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                Get In Touch
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </GlassCard>
         </div>
       </main>
 

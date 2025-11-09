@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import Card from "@/components/Card";
+import GlassCard from "@/components/GlassCard";
 import StatsCounter from "@/components/StatsCounter";
 import Hero from "@/components/Hero";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
@@ -78,13 +78,17 @@ const Index = () => {
         {/* Hero Section */}
         <Hero title="Accelerating Intelligence for Every Business" subtitle="Transform your business with cutting-edge AI solutions" backgroundImage={heroImage}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg">
-              Get Started Today
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg">
-              View Solutions
-            </Button>
+            <Link to="/contact">
+              <Button size="lg" className="text-lg">
+                Get Started Today
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+            <Link to="/solutions/consulting">
+              <Button size="lg" variant="outline" className="text-lg">
+                View Solutions
+              </Button>
+            </Link>
           </div>
         </Hero>
 
@@ -125,7 +129,7 @@ const Index = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {services.map((service, index) => (
                 <Link key={service.title} to={service.link}>
-                  <Card
+                  <GlassCard
                     hover
                     className="h-full text-center animate-slide-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
@@ -138,7 +142,7 @@ const Index = () => {
                     <div className="flex items-center justify-center text-primary text-sm font-medium">
                       Learn more <ArrowRight className="ml-2 w-4 h-4" />
                     </div>
-                  </Card>
+                  </GlassCard>
                 </Link>
               ))}
             </div>
@@ -173,13 +177,17 @@ const Index = () => {
               Let's discuss how AI can drive your success. Schedule a consultation today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="outline" className="text-lg border-white text-white hover:bg-white hover:text-primary">
-                Schedule Consultation
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg border-white text-white hover:bg-white hover:text-primary">
-                View Case Studies
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" variant="outline" className="text-lg border-white text-white hover:bg-white hover:text-primary">
+                  Schedule Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Link to="/about">
+                <Button size="lg" variant="outline" className="text-lg border-white text-white hover:bg-white hover:text-primary">
+                  Learn About Us
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import Card from "@/components/Card";
+import GlassCard from "@/components/GlassCard";
 import { Button } from "@/components/ui/button";
 import { Scale, FileSearch, Brain, Shield, ArrowRight } from "lucide-react";
 import legalImage from "@/assets/legal-assistant.jpg";
@@ -87,10 +88,12 @@ const Legal = () => {
                 Empower your legal and tax teams with AI that researches, analyzes, and drafts
                 with the precision of senior professionals, at the speed of technology.
               </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Get Started
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  Get Started
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
             </div>
             <div className="animate-slide-up">
               <img
@@ -106,7 +109,7 @@ const Legal = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Core Capabilities</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
-                <Card
+                <GlassCard
                   key={feature.title}
                   hover
                   className="text-center animate-slide-up"
@@ -117,7 +120,7 @@ const Legal = () => {
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                   <p className="text-muted-foreground text-sm">{feature.description}</p>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>
@@ -129,7 +132,7 @@ const Legal = () => {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {useCases.map((useCase, index) => (
-                <Card
+                <GlassCard
                   key={useCase.title}
                   hover
                   className="animate-slide-up"
@@ -140,14 +143,14 @@ const Legal = () => {
                   <div className="inline-block px-3 py-1 bg-primary/10 rounded-full text-xs font-medium text-primary">
                     {useCase.savings}
                   </div>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>
 
           {/* Benefits */}
           <div className="max-w-4xl mx-auto">
-            <Card>
+            <GlassCard>
               <h2 className="text-3xl font-bold mb-8 text-center">Key Benefits</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 {benefits.map((benefit) => (
@@ -159,22 +162,24 @@ const Legal = () => {
                   </div>
                 ))}
               </div>
-            </Card>
+            </GlassCard>
           </div>
 
           {/* CTA */}
           <div className="mt-20">
-            <Card className="max-w-3xl mx-auto text-center border-2 border-primary">
+            <GlassCard className="max-w-3xl mx-auto text-center border-2 border-primary">
               <h2 className="text-3xl font-bold mb-4">See It In Action</h2>
               <p className="text-muted-foreground mb-8">
                 Schedule a personalized demo to see how our AI Legal & Tax Assistant
                 can transform your practice.
               </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Book Demo
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Card>
+              <Link to="/contact">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  Book Demo
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+            </GlassCard>
           </div>
         </div>
       </main>

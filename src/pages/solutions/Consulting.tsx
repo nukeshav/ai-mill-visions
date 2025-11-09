@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import Card from "@/components/Card";
+import GlassCard from "@/components/GlassCard";
 import { Button } from "@/components/ui/button";
 import { Brain, Code, Lightbulb, Target, CheckCircle2, ArrowRight } from "lucide-react";
 import consultingImage from "@/assets/consulting-visual.jpg";
@@ -84,10 +85,12 @@ const Consulting = () => {
                 Partner with experts who understand both AI technology and your business.
                 We deliver enterprise-grade solutions with boutique-level attention to detail.
               </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Start Your Project
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              <Link to="/contact">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  Start Your Project
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
             </div>
             <div className="animate-slide-up">
               <img
@@ -103,7 +106,7 @@ const Consulting = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Our Capabilities</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {capabilities.map((capability, index) => (
-                <Card
+                <GlassCard
                   key={capability.title}
                   hover
                   className="text-center animate-slide-up"
@@ -114,7 +117,7 @@ const Consulting = () => {
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{capability.title}</h3>
                   <p className="text-muted-foreground text-sm">{capability.description}</p>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>
@@ -124,7 +127,7 @@ const Consulting = () => {
             <h2 className="text-4xl font-bold text-center mb-12">Our Process</h2>
             <div className="grid md:grid-cols-5 gap-6">
               {process.map((item, index) => (
-                <Card
+                <GlassCard
                   key={item.step}
                   className="text-center animate-slide-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -132,13 +135,13 @@ const Consulting = () => {
                   <div className="text-5xl font-bold text-primary mb-4">{item.step}</div>
                   <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-sm">{item.description}</p>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>
 
           {/* Industries */}
-          <Card className="max-w-4xl mx-auto">
+          <GlassCard className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center">Industries We Serve</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {industries.map((industry) => (
@@ -148,7 +151,7 @@ const Consulting = () => {
                 </div>
               ))}
             </div>
-          </Card>
+          </GlassCard>
         </div>
       </main>
 
