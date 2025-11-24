@@ -4,7 +4,7 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#263358] text-white">
+    <footer className="bg-gradient-to-br from-[#8a3c02] to-[#ff8a1c] text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About Column */}

@@ -17,20 +17,17 @@ const Navigation = () => {
   ];
 
   return (
-    <>
-      {/* Unified Navbar - Same design for all screen sizes */}
-      <nav className="fixed top-5 left-1/2 -translate-x-1/2 w-[95%] max-w-[900px] h-[60px] px-4 md:px-8 rounded-full backdrop-blur-xl z-50 shadow-lg">
-        <div 
-          className="absolute inset-0 rounded-full"
-          style={{ background: 'rgba(255, 255, 255, 0.4)' }}
-        />
-        
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="flex items-center gap-4 md:gap-8 text-xs md:text-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/20 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+        <Link to="/" className="text-white text-xl font-semibold tracking-[0.2em] uppercase">
+          AI Mill
+        </Link>
+
+        <div className="flex items-center gap-4 md:gap-8 text-xs md:text-sm text-white/80">
             <Link
               to="/"
               className={`transition-colors ${
-                isActive("/") ? "text-primary font-semibold" : "text-foreground/80 hover:text-foreground"
+                isActive("/") ? "text-white font-semibold" : "text-white/70 hover:text-white"
               }`}
             >
               Home
@@ -38,7 +35,7 @@ const Navigation = () => {
             <Link
               to="/about"
               className={`transition-colors ${
-                isActive("/about") ? "text-primary font-semibold" : "text-foreground/80 hover:text-foreground"
+                isActive("/about") ? "text-white font-semibold" : "text-white/70 hover:text-white"
               }`}
             >
               About
@@ -52,7 +49,7 @@ const Navigation = () => {
               onClick={() => setSolutionsOpen(!solutionsOpen)}
             >
               <button className={`text-xs md:text-sm flex items-center gap-1 transition-colors py-2 ${
-                isSolutionsActive ? "text-primary font-semibold" : "text-foreground/80 hover:text-foreground"
+                isSolutionsActive ? "text-white font-semibold" : "text-white/70 hover:text-white"
               }`}>
                 Solutions <ChevronDown className="w-3 h-3 md:w-4 md:h-4" />
               </button>
@@ -78,15 +75,21 @@ const Navigation = () => {
             <Link
               to="/contact"
               className={`transition-colors ${
-                isActive("/contact") ? "text-primary font-semibold" : "text-foreground/80 hover:text-foreground"
+                isActive("/contact") ? "text-white font-semibold" : "text-white/70 hover:text-white"
               }`}
             >
               Contact
             </Link>
-          </div>
         </div>
-      </nav>
-    </>
+
+        <Link
+          to="/contact"
+          className="hidden md:inline-flex px-5 py-2 border border-white/60 text-white text-xs font-semibold tracking-wide rounded-md hover:bg-white/10 transition-colors"
+        >
+          Talk to Us
+        </Link>
+      </div>
+    </nav>
   );
 };
 

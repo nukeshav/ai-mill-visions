@@ -72,7 +72,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
       
       <main>
         {/* Hero Section */}
@@ -91,8 +90,10 @@ const Index = () => {
             </Link>
           </div>
         </Hero>
-
+       
         {/* Stats Counter */}
+        <Navigation />
+        
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -115,6 +116,8 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* Navigation Bar */}
 
         {/* Services Grid */}
         <section className="py-20 bg-white">

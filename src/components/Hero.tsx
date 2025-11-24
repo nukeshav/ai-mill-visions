@@ -25,7 +25,7 @@ const Hero = ({ title, subtitle, backgroundImage, height = "full", children, bre
               backgroundPosition: "center",
             }
           : {
-              background: "linear-gradient(135deg, hsl(210 22% 31%) 0%, hsl(210 22% 22%) 100%)",
+              background: "linear-gradient(135deg, hsl(26 70% 45%) 0%, hsl(18 55% 30%) 100%)",
             }
       }
     >

@@ -58,9 +58,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        navy: "hsl(210 22% 31%)",
-        orange: "hsl(20 100% 63%)",
-        'light-gray': "hsl(210 17% 98%)",
+        navy: "hsl(24 35% 25%)",
+        orange: "hsl(26 94% 56%)",
+        'light-gray': "hsl(30 35% 96%)",
       },
       borderRadius: {
         lg: "var(--radius)",
